@@ -1,4 +1,3 @@
-
 import random
 import math
 from src.cell import Cell
@@ -40,7 +39,7 @@ class Maze(object):
         self.generation_path = []
         self.solution_path = None
         self.cost = 0 # The cost of the solution path
-        random.seed(0) # Seed for random number generator
+        random.seed(2) # Seed for random number generator
         self.initial_grid = self.generate_grid()
         self.grid = self.initial_grid
         self.generate_maze(algorithm, (0, 0))

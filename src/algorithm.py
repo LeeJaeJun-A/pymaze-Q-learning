@@ -1,4 +1,3 @@
-import time
 import random
 
 # global variable to store list of all available algorithms
@@ -12,8 +11,6 @@ def depth_first_recursive_backtracker( maze, start_coor ):
         maze.grid[k_curr][l_curr].visited = True     # Set initial cell to visited
         visit_counter = 1                       # To count number of visited cells
         visited_cells = list()                  # Stack of visited cells for backtracking
-
-        time_start = time.time()
 
         while visit_counter < maze.grid_size:     # While there are unvisited cells
             neighbour_indices = maze.find_neighbours(k_curr, l_curr)    # Find neighbour indicies
@@ -46,9 +43,6 @@ def depth_first_recursive_backtracker( maze, start_coor ):
         maze.generation_path = path
 
 def binary_tree( maze, start_coor ):
-    # store the current time
-    time_start = time.time()
-
     # repeat the following for all rows
     for i in range(0, maze.num_rows):
 
@@ -105,9 +99,6 @@ def binary_tree( maze, start_coor ):
     k_curr, l_curr = (maze.num_rows-1, maze.num_cols-1)
     # add first cell to the path
     path.append( (k_curr,l_curr) )
-
-    # mark first cell as visited
-    begin_time = time.time()
 
     # repeat until all the cells have been visited
     while visit_counter < maze.grid_size:     # While there are unvisited cells

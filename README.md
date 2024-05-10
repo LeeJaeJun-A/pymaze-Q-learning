@@ -11,7 +11,12 @@ Or, for direct installation:
 
 `pip install matplotlib`
 
+If you're encountering issues with creating video or PNG files, it's likely that you need to install `ffmpeg`. 
 
+If you're using Windows, I recommend reading the following article for detailed installation instructions.
+`https://www.lainyzine.com/ko/article/how-to-install-ffmpeg-on-windows-10/`
+Just follow the steps outlined to set up `ffmpeg` on your system. This should help resolve any issues with video or image file creation.
+ 
 ### Source Layout
 * /src/   Contains all the source code modules needed to operate MazeGenerator.
 * /examples/  Provides example files that demonstrate how to utilize the library.
@@ -34,13 +39,6 @@ To execute the Q-learning algorithm, use the following command:
 `python -m examples.solve_Q_learning`
 
 Upon execution, you will be prompted to enter values for episodes, learning rate, discount factor, and exploration rate.
-
-- Recommended Settings:
-Episodes:
-Learning Rate:
-Discount Factor:
-Exploration Rate:
-
 
 #### Visualization
 

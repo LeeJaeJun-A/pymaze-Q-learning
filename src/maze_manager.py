@@ -99,7 +99,7 @@ class MazeManager(object):
     def solve_maze(self, maze_id, method, neighbor_method="fancy"):
         """ Called to solve a maze by a particular method. The method
         is specified by a string. The options are
-            1. DepthFirstBacktracker
+            1. Q_learning
             2.
             3.
         Args:
@@ -113,8 +113,6 @@ class MazeManager(object):
             print("Unable to locate maze. Exiting solver.")
             return None
 
-        """DEVNOTE: When adding a new solution method, call it from here.
-            Also update the list of names in the documentation above"""
         if method == "Q_learning":
             while True:
                 try:
@@ -143,7 +141,6 @@ class MazeManager(object):
                 except ValueError:
                     print("Invalid input. Please enter a valid floating-point number between 0 and 1.")
                     
-
             while True:
                 try:
                     exploration_rate = float(input("Enter the exploration rate: "))

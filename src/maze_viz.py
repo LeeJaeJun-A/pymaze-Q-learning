@@ -122,7 +122,7 @@ class Visualizer(object):
 
         # Handle any saving
         if self.media_filename:
-            fig.savefig("{}{}.png".format(self.media_filename, "_solution"), frameon=None)
+            fig.savefig("{}{}.png".format(self.media_filename, "_solution"))
 
     def show_generation_animation(self):
         """Function that animates the process of generating the a maze where path is a list
@@ -262,10 +262,6 @@ class Visualizer(object):
         def animate_squares(frame):
             """Function to animate the solved path of the algorithm."""
             if frame > 0:
-                # if self.maze.solution_path[frame - 1][1]:  # Color backtracking
-                #     self.squares["{},{}".format(self.maze.solution_path[frame - 1][0],
-                #                            self.maze.solution_path[frame - 1][1])].set_facecolor("orange")
-
                 self.squares["{},{}".format(self.maze.solution_path[frame - 1][0],
                                        self.maze.solution_path[frame - 1][1])].set_visible(True)
                 self.squares["{},{}".format(self.maze.solution_path[frame][0],
@@ -282,12 +278,15 @@ class Visualizer(object):
             """Function to supervise animation of all objects."""
             animate_squares(frame)
             animate_indicator(frame)
+            if frame == self.maze.solution_path.__len__() - 1:
+                self.squares["{},{}".format(self.maze.solution_path[-1][0],
+                                       self.maze.solution_path[-1][1])].set_visible(True)
             self.ax.set_title("Step: {}".format(frame + 1), fontname = "serif", fontsize = 19)
             return []
 
         anim = animation.FuncAnimation(fig, animate, frames=self.maze.solution_path.__len__(),
                                        interval=100, blit=True, repeat=False)
-
+        
         # Handle any saving
         if self.media_filename:
             print("Saving solution animation. This may take a minute....")
