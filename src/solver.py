@@ -56,6 +56,7 @@ def select_best_action(current_state, q_table, valid_actions):
             best_actions.append(action)
     return random.choice(best_actions)
 
+
 def q_learning(maze, episodes_num, learning_rate, discount_factor, exploration_rate):
     """
     Implements the Q-learning algorithm to find the optimal policy for navigating a maze.
@@ -78,9 +79,10 @@ def q_learning(maze, episodes_num, learning_rate, discount_factor, exploration_r
         the action with the highest Q-value at each state.
     """
     q_table = np.zeros((maze.num_rows, maze.num_cols, 4)) # Initialize Q-table with zeros
-    first_hit = episodes_num
+
     for episode in range(episodes_num): # Loop over episodes
         current_state = maze.entry_coor # Initialize the current state
+
         for step in range(maximum_steps): # Loop over steps
             # Apply ε-greedy strategy
             valid_actions = valid_action(current_state, maze)
@@ -108,14 +110,13 @@ def q_learning(maze, episodes_num, learning_rate, discount_factor, exploration_r
             q_table[current_state[0], current_state[1], action] = q_now + learning_rate * (reward + discount_factor * max_next_q_value - q_now)
 
             current_state = next_state # Move to the next state
-            
+
             if next_state == maze.exit_coor: # If the agent reaches the exit, terminate the episode
-                if first_hit > episode:
-                    first_hit = episode
                 break
 
-        exploration_rate = max(minimum_exploration_rate, exploration_rate * exploration_decay) # Decay the exploration rate to reduce exploration over time
-    print(first_hit)
+        # Decay the exploration rate to reduce exploration over time
+        exploration_rate = max(minimum_exploration_rate, exploration_rate * exploration_decay) 
+
     return q_table
 
 def q_learning_path(maze, q_table):

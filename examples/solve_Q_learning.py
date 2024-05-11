@@ -10,7 +10,7 @@ if __name__ == "__main__":
     maze = manager.add_maze(20, 20)
 
     # Save mp4 file and png
-    manager.set_filename("Q_learning")
+    # manager.set_filename("Q_learning")
 
     # Solve the maze using the Q_learning algorithm
     manager.solve_maze(maze.id, "Q_learning")
